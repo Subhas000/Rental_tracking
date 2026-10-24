@@ -1,0 +1,110 @@
+{
+  "name": "rental",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch-project1": "cds watch --open project1/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-project2": "cds watch --open project2/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-project3": "cds watch --open project3/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-project4": "cds watch --open project4/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-project5": "cds watch --open project5/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-project6": "cds watch --open project6/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-project7": "cds watch --open project7/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-project8": "cds watch --open project8/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-project9": "cds watch --open project9/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-project10": "cds watch --open project10/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "undeploy": "cf undeploy rental --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+    "watch-project11": "cds watch --open project11/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-project12": "cds watch --open project12/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-project13": "cds watch --open project13/index.html?sap-ui-xx-viewCache=false --livereload false"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@cap-js/hana": "^3.1.2",
+    "@sap/cds": "^10.1.1",
+    "@sap/xssec": "^4"
+  },
+  "sapux": [
+    "app/project1",
+    "app/project2",
+    "app/project3",
+    "app/project4",
+    "app/project5",
+    "app/project6",
+    "app/project7",
+    "app/project8",
+    "app/project9"
+  ],
+  "workspaces": [
+    "app/*"
+  ],
+  "devDependencies": {
+    "@sap/cds-dk": "^10",
+    "cds-plugin-ui5": "^0.17.0",
+    "mbt": "^1.2.49",
+    "rimraf": "^5.0.5"
+  },
+  "cds": {
+    "requires": {
+      "[development]": {
+        "auth": {
+          "kind": "mocked",
+          "users": {
+            "admin@rental.com": {
+              "password": "admin",
+              "roles": [
+                "Admin"
+              ]
+            },
+            "manager@rental.com": {
+              "password": "manager",
+              "roles": [
+                "Manager"
+              ]
+            },
+            "auditor@rental.com": {
+              "password": "auditor",
+              "roles": [
+                "Auditor"
+              ]
+            },
+            "dispatcher@rental.com": {
+              "password": "dispatcher",
+              "roles": [
+                "Dispatcher"
+              ]
+            },
+            "yardworker@rental.com": {
+              "password": "yardworker",
+              "roles": [
+                "YardWorker"
+              ]
+            },
+            "technician@rental.com": {
+              "password": "technician",
+              "roles": [
+                "Technician"
+              ]
+            },
+            "billing@rental.com": {
+              "password": "billing",
+              "roles": [
+                "BillingClerk"
+              ]
+            }
+          }
+        }
+      },
+      "[production]": {
+        "auth": "xsuaa"
+      }
+    }
+  }
+}

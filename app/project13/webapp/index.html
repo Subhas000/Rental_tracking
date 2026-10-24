@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Clerk Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">
+        💰 Billing Clerk<br>
+        Dashboard
+    </div>
+
+    <div class="menu">
+        <a href="#" class="active">💰 Dashboard</a>
+        <a href="#">🧾 Billing</a>
+        <a href="#">📄 Rentals</a>
+        <a href="#">👥 Customers</a>
+        <a href="#">✅ Payments</a>
+        <a href="#">📊 Revenue</a>
+        <a href="#">📋 Invoices</a>
+    </div>
+
+    <div class="logout">
+        <button onclick="window.location.href='../index.html'">
+            🚪 Logout
+        </button>
+    </div>
+
+</div>
+
+<div class="main">
+
+    <div class="topbar">
+
+        <div class="search-box">
+            <input type="text" placeholder="Search invoices, payments, customers...">
+        </div>
+
+        <div class="profile-area">
+            <div class="icon-btn">🔔</div>
+            <div class="icon-btn">📢</div>
+            <div class="avatar">BC</div>
+            <div class="profile-name">Billing Clerk Dashboard</div>
+        </div>
+
+    </div>
+
+    <div class="header">
+
+        <div>
+            <h3>Welcome Back,</h3>
+            <h1>Billing Dashboard</h1>
+            <p>Manage invoices, customer billing and payments.</p>
+        </div>
+
+        <div class="datetime">
+            <div id="date"></div>
+            <br>
+            <div id="time"></div>
+        </div>
+
+    </div>
+
+    <div class="stats">
+
+        <div class="card green">
+            <div class="card-icon">🧾</div>
+            <div>
+                <h2>125</h2>
+                <p>Total Invoices</p>
+            </div>
+        </div>
+
+        <div class="card blue">
+            <div class="card-icon">💰</div>
+            <div>
+                <h2>₹4.8L</h2>
+                <p>Total Revenue</p>
+            </div>
+        </div>
+
+        <div class="card orange">
+            <div class="card-icon">⏳</div>
+            <div>
+                <h2>18</h2>
+                <p>Pending Payments</p>
+            </div>
+        </div>
+
+        <div class="card purple">
+            <div class="card-icon">👥</div>
+            <div>
+                <h2>25</h2>
+                <p>Active Customers</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="content">
+
+        <div class="panel">
+
+            <div class="panel-title">
+                🧾 Today's Invoices
+            </div>
+
+            <table>
+
+                <tr>
+                    <th>Invoice ID</th>
+                    <th>Customer</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                </tr>
+
+                <tr>
+                    <td>INV-1001</td>
+                    <td>ABC Constructions</td>
+                    <td>₹25,000</td>
+                    <td class="paid">Paid</td>
+                </tr>
+
+                <tr>
+                    <td>INV-1002</td>
+                    <td>XYZ Builders</td>
+                    <td>₹18,500</td>
+                    <td class="pending">Pending</td>
+                </tr>
+
+                <tr>
+                    <td>INV-1003</td>
+                    <td>Metro Infra</td>
+                    <td>₹42,000</td>
+                    <td class="overdue">Overdue</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+        <div class="panel">
+
+            <div class="panel-title">
+                💳 Payment Queue
+            </div>
+
+            <div class="queue-card">
+                <h4>INV-1002</h4>
+                <p>Awaiting Payment</p>
+            </div>
+
+            <div class="queue-card">
+                <h4>INV-1003</h4>
+                <p>Overdue Invoice</p>
+            </div>
+
+            <div class="queue-card">
+                <h4>INV-1004</h4>
+                <p>Processing Payment</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function updateDateTime(){
+
+    const now = new Date();
+
+    document.getElementById("date").innerHTML =
+        now.toDateString();
+
+    document.getElementById("time").innerHTML =
+        now.toLocaleTimeString();
+
+}
+
+setInterval(updateDateTime,1000);
+updateDateTime();
+
+</script>
+
+</body>
+</html>

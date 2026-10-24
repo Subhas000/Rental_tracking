@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment Rental Tracking System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<div id="loginModal" class="modal">
+
+    <div class="modal-content">
+
+        <h2>🔐 Login</h2>
+
+        <input
+            type="text"
+            id="username"
+            placeholder="Username">
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Password">
+
+        <button onclick="validateLogin()" class="login-btn">
+            Login
+        </button>
+
+        <button onclick="closeLogin()" class="cancel-btn">
+            Cancel
+        </button>
+
+    </div>
+
+</div>
+<script>
+
+let currentRole="";
+let currentUrl="";
+
+function openLogin(role,url){
+
+    currentRole=role;
+    currentUrl=url;
+
+    document.getElementById("loginModal").style.display="flex";
+}
+
+function closeLogin(){
+
+    document.getElementById("loginModal").style.display="none";
+}
+
+function validateLogin(){
+
+    const username=
+    document.getElementById("username").value;
+
+    const password=
+    document.getElementById("password").value;
+
+    if(
+        currentRole==="Admin" &&
+        username==="admin" &&
+        password==="admin"
+    ){
+
+        window.open(currentUrl,"_blank");
+        closeLogin();
+        return;
+    }
+
+    if(
+        currentRole==="Manager" &&
+        username==="manager" &&
+        password==="manager"
+    ){
+
+        window.open(currentUrl,"_blank");
+        closeLogin();
+        return;
+    }
+    if(
+        currentRole==="Auditor" &&
+        username==="auditor" &&
+        password==="auditor"
+    ){
+
+        window.open(currentUrl,"_blank");
+        closeLogin();
+        return;
+    }
+
+    if(
+        currentRole==="YardWorker" &&
+        username==="yardworker" &&
+        password==="yardworker"
+    ){
+
+        window.open(currentUrl,"_blank");
+        closeLogin();
+        return;
+    }
+    if(
+    currentRole === "Dispatcher" &&
+    username === "dispatcher" &&
+    password === "dispatcher"
+){
+    window.open(currentUrl,"_blank");
+    closeLogin();
+    return;
+}
+if(
+    currentRole === "Technician" &&
+    username === "technician" &&
+    password === "technician"
+){
+    window.open(currentUrl,"_blank");
+    closeLogin();
+    return;
+}
+if(
+    currentRole === "Billing Clerk" &&
+    username === "billing" &&
+    password === "billing"
+){
+    window.open(currentUrl,"_blank");
+    closeLogin();
+    return;
+}
+
+    alert("Invalid Credentials");
+}
+
+</script>
+<body>
+
+<div class="container">
+
+    <div class="hero">
+
+        <div class="overlay">
+
+            <div class="topbar">
+                <div class="logo">
+                     Rental Equipment Tracking System
+                </div>
+
+                <div class="menu">
+                    <span>Efficient Rentals</span>
+                    <span>Safe Equipment</span>
+                    <span>Better Tomorrow</span>
+                </div>
+            </div>
+
+            <div class="hero-content">
+                <h2>Welcome to</h2>
+                <h1> Rental Equipment Tracking</h1>
+                <p>Choose your workspace to continue -></p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="roles">
+
+        <div class="tile admin"
+     onclick="openLogin(
+     'Admin',
+     'https://port4004-workspaces-ws-hg171.us10.trial.applicationstudio.cloud.sap/project2/index.html'
+     )">
+
+    <div class="icon">🛡️</div>
+
+    <div class="content">
+        <h3>Admin</h3>
+        <p>System Administration</p>
+    </div>
+
+</div>
+        <div class="tile manager"
+        onclick="openLogin(
+     'Manager',
+     'https://port4004-workspaces-ws-hg171.us10.trial.applicationstudio.cloud.sap/project2/index.html'
+     )">>
+            <div class="icon">📊</div>
+            <div class="content">
+                <h3>Manager</h3>
+                <p>Analytics & Operations</p>
+            </div>
+        </div>
+
+        <div class="tile auditor"
+         onclick="openLogin(
+     'Auditor',
+     'https://port4004-workspaces-ws-hg171.us10.trial.applicationstudio.cloud.sap/project2/index.html'
+     )">
+            <div class="icon">🔍</div>
+            <div class="content">
+                <h3>Auditor</h3>
+                <p>Audit & Compliance</p>
+            </div>
+        </div>
+
+        <div class="tile dispatcher"
+        onclick="openLogin(
+     'Dispatcher',
+     'https://port4004-workspaces-ws-hg171.us10.trial.applicationstudio.cloud.sap/project11/index.html'
+     )">
+            <div class="icon">🚚</div>
+            <div class="content">
+                <h3>Dispatcher</h3>
+                <p>Rental Dispatching</p>
+            </div>
+        </div>
+
+        <div class="tile yard"
+        onclick="openLogin(
+     'YardWorker',
+     'https://port4004-workspaces-ws-hg171.us10.trial.applicationstudio.cloud.sap/project10/index.html'
+     )">
+            <div class="icon">🚜</div>
+            <div class="content">
+                <h3>Yard Worker</h3>
+                <p>Damage & Inspection Reports</p>
+            </div>
+        </div>
+
+        <div class="tile tech"
+       onclick="openLogin(
+     'Technician',
+     'https://port4004-workspaces-ws-hg171.us10.trial.applicationstudio.cloud.sap/project12/index.html'
+     )">
+            <div class="icon">🔧</div>
+            <div class="content">
+                <h3>Technician</h3>
+                <p>Maintenance & Repairs</p>
+            </div>
+        </div>
+
+        <div class="tile billing"
+         onclick="openLogin('Billing Clerk', 'https://port4004-workspaces-ws-hg171.us10.trial.applicationstudio.cloud.sap/project13/index.html')">
+            <div class="icon">🧾</div>
+            <div class="content">
+                <h3>Billing Clerk</h3>
+                <p>Invoices & Payments</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        Equipment Rental Tracking System • Secure • Reliable • Efficient
+    </div>
+
+</div>
+<script>
+
+document.querySelectorAll(
+'.btn-add, .btn-edit, .btn-delete'
+).forEach(btn => {
+    btn.style.display = 'none';
+});
+
+</script>
+</body>
+</html>

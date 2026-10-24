@@ -1,0 +1,35 @@
+GET http://localhost:4004/odata/v4/catalog/$metadata
+
+###
+GET http://localhost:4004/odata/v4/catalog/CustomerSrv
+
+###
+POST http://localhost:4004/odata/v4/catalog/CustomerSrv
+Content-Type: application/json
+
+{
+  "companyName": "ABC Rentals",
+  "contactPerson": "Subhashini",
+  "email": "subhashini@gmail.com",
+  "phone": "9876543210",
+  "address": "Bangalore",
+  "s4CustomerID": "S4001"
+}
+
+###
+POST http://localhost:4004/odata/v4/catalog/LocationSrv
+Content-Type: application/json
+
+{
+    "locationName": "Chennai Branch",
+    "locationType": "Warehouse",
+    "address": "OMR Road",
+    "city": "Chennai",
+    "latitude": 13.082680,
+    "longitude": 80.270721
+}
+###
+http://localhost:4004/odata/v4/Analytics/$metadata
+
+###
+http://localhost:4004/odata/v4/catalog/DamagePhotoSrv?$format=json

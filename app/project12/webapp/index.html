@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technician Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            🔧 Technician Dashboard
+        </div>
+
+        <ul class="menu">
+
+            <li class="active">
+                📊 Dashboard
+            </li>
+
+            <li onclick="window.open('https://port4004-workspaces-ws-hg171.us10.trial.applicationstudio.cloud.sap/project4/index.html','_blank')">
+                🚜 Equipment
+            </li>
+
+            <li onclick="window.open('https://port4004-workspaces-ws-hg171.us10.trial.applicationstudio.cloud.sap/project7/index.html','_blank')">
+                🔧 Maintenance
+            </li>
+
+            <li onclick="window.open('https://port4004-workspaces-ws-hg171.us10.trial.applicationstudio.cloud.sap/project5/index.html','_blank')">
+                ⚠️ Damage Records
+            </li>
+
+            <li onclick="window.open('https://port4004-workspaces-ws-hg171.us10.trial.applicationstudio.cloud.sap/project6/index.html','_blank')">
+                📋 Condition Logs
+            </li>
+
+            <li>
+                📸 Damage Photos
+            </li>
+
+            <li>
+                ✅ Repair Tasks
+            </li>
+
+        </ul>
+
+        <div class="logout-container">
+
+            <button class="logout-item"
+                    onclick="logout()">
+
+                🚪 Logout
+
+            </button>
+
+        </div>
+
+        <div class="sidebar-footer">
+            Technician Dashboard
+        </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+
+        <div class="topbar">
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    placeholder="Search maintenance jobs...">
+
+            </div>
+
+            <div class="topbar-right">
+
+                <div class="notification">🔔</div>
+
+                <div class="notification">📢</div>
+
+                <div class="profile">
+
+                    <div class="avatar">
+                        TC
+                    </div>
+
+                    <div>
+                        <strong>Technician</strong><br>
+                        Dashboard
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- HEADER -->
+
+        <div class="page-header">
+
+            <div>
+
+                <h4>Welcome back,</h4>
+
+                <h1>Technician Dashboard</h1>
+
+                <p>
+                    Manage equipment maintenance, inspections and repair activities.
+                </p>
+
+            </div>
+
+            <div id="dateTime" class="date-box"></div>
+
+        </div>
+
+        <!-- KPI CARDS -->
+
+        <div class="kpi-grid">
+
+            <div class="kpi-card green">
+
+                <div class="kpi-icon">
+                    🔧
+                </div>
+
+                <div>
+                    <h2>18</h2>
+                    <p>Pending Repairs</p>
+                </div>
+
+            </div>
+
+            <div class="kpi-card blue">
+
+                <div class="kpi-icon">
+                    ⚠️
+                </div>
+
+                <div>
+                    <h2>7</h2>
+                    <p>Damage Cases</p>
+                </div>
+
+            </div>
+
+            <div class="kpi-card orange">
+
+                <div class="kpi-icon">
+                    🛠️
+                </div>
+
+                <div>
+                    <h2>12</h2>
+                    <p>Maintenance Jobs</p>
+                </div>
+
+            </div>
+
+            <div class="kpi-card purple">
+
+                <div class="kpi-icon">
+                    🚜
+                </div>
+
+                <div>
+                    <h2>48</h2>
+                    <p>Equipment</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- MAIN GRID -->
+
+        <div class="content-grid">
+
+            <!-- MAINTENANCE JOBS -->
+
+            <div class="tasks-panel">
+
+                <h3>🔧 Maintenance Jobs</h3>
+
+                <table>
+
+                    <tr>
+                        <th>Job ID</th>
+                        <th>Equipment</th>
+                        <th>Status</th>
+                    </tr>
+
+                    <tr>
+                        <td>M001</td>
+                        <td>Excavator</td>
+                        <td class="pending">
+                            Pending
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>M002</td>
+                        <td>Forklift</td>
+                        <td class="success">
+                            Completed
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>M003</td>
+                        <td>Loader</td>
+                        <td class="pending">
+                            In Progress
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+            <!-- DAMAGE REPORTS -->
+
+            <div class="uploads-panel">
+
+                <h3>⚠️ Damage Reports</h3>
+
+                <div class="upload-item">
+
+                    <strong>D001</strong>
+
+                    <p>
+                        Hydraulic Leak
+                    </p>
+
+                </div>
+
+                <div class="upload-item">
+
+                    <strong>D002</strong>
+
+                    <p>
+                        Broken Headlight
+                    </p>
+
+                </div>
+
+                <div class="upload-item">
+
+                    <strong>D003</strong>
+
+                    <p>
+                        Cable Damage
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- BOTTOM GRID -->
+
+        <div class="bottom-grid">
+
+            <div class="tasks-panel">
+
+                <h3>📋 Inspection Logs</h3>
+
+                <table>
+
+                    <tr>
+                        <th>Equipment</th>
+                        <th>Status</th>
+                    </tr>
+
+                    <tr>
+                        <td>Excavator</td>
+                        <td class="success">
+                            Passed
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Forklift</td>
+                        <td class="pending">
+                            Needs Service
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Loader</td>
+                        <td class="success">
+                            Passed
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+            <div class="uploads-panel">
+
+                <h3>📢 Recent Activity</h3>
+
+                <div class="upload-item">
+                    ✅ Repair Completed
+                </div>
+
+                <div class="upload-item">
+                    📸 Damage Photos Uploaded
+                </div>
+
+                <div class="upload-item">
+                    📋 Inspection Updated
+                </div>
+
+                <div class="upload-item">
+                    🚜 Equipment Serviced
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script>
+
+function logout(){
+
+    if(confirm("Are you sure you want to logout?")){
+
+        window.location.href =
+        "https://port4004-workspaces-ws-hg171.us10.trial.applicationstudio.cloud.sap/index.html";
+
+    }
+
+}
+
+function updateDateTime(){
+
+    const now = new Date();
+
+    const date = now.toLocaleDateString(
+        "en-IN",
+        {
+            weekday:"short",
+            day:"numeric",
+            month:"short",
+            year:"numeric"
+        }
+    );
+
+    const time = now.toLocaleTimeString(
+        "en-IN",
+        {
+            hour:"2-digit",
+            minute:"2-digit",
+            second:"2-digit"
+        }
+    );
+
+    document.getElementById("dateTime").innerHTML =
+        date + "<br>" + time;
+}
+
+updateDateTime();
+
+setInterval(updateDateTime,1000);
+
+</script>
+
+</body>
+</html>

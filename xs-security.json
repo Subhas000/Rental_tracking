@@ -1,0 +1,86 @@
+{
+  "xsappname": "rental-tracking-app",
+  "tenant-mode": "dedicated",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.Admin",
+      "description": "Full system administration"
+    },
+    {
+      "name": "$XSAPPNAME.Manager",
+      "description": "Manager access"
+    },
+    {
+      "name": "$XSAPPNAME.Auditor",
+      "description": "Read only audit access"
+    },
+    {
+      "name": "$XSAPPNAME.Dispatcher",
+      "description": "Equipment dispatch and transfers"
+    },
+    {
+      "name": "$XSAPPNAME.YardWorker",
+      "description": "Inspection and damage reporting"
+    },
+    {
+      "name": "$XSAPPNAME.Technician",
+      "description": "Maintenance and repairs"
+    },
+    {
+      "name": "$XSAPPNAME.BillingClerk",
+      "description": "Billing and invoicing"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "Admin",
+      "description": "Administrator",
+      "scope-references": [
+        "$XSAPPNAME.Admin"
+      ]
+    },
+    {
+      "name": "Manager",
+      "description": "Manager",
+      "scope-references": [
+        "$XSAPPNAME.Manager"
+      ]
+    },
+    {
+      "name": "Auditor",
+      "description": "Auditor",
+      "scope-references": [
+        "$XSAPPNAME.Auditor"
+      ]
+    },
+    {
+      "name": "Dispatcher",
+      "description": "Dispatcher",
+      "scope-references": [
+        "$XSAPPNAME.Dispatcher"
+      ]
+    },
+    {
+      "name": "YardWorker",
+      "description": "Yard Worker",
+      "scope-references": [
+        "$XSAPPNAME.YardWorker"
+      ]
+    },
+    {
+      "name": "Technician",
+      "description": "Technician",
+      "scope-references": [
+        "$XSAPPNAME.Technician"
+      ]
+    },
+    {
+      "name": "BillingClerk",
+      "description": "Billing Clerk",
+      "scope-references": [
+        "$XSAPPNAME.BillingClerk"
+      ]
+    }
+  ],
+  "attributes": []
+}

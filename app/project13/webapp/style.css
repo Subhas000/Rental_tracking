@@ -1,0 +1,332 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#021b3a;
+    color:white;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    width:280px;
+    height:100vh;
+    background:#001530;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    border-right:1px solid rgba(255,255,255,0.1);
+}
+
+.logo{
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:40px;
+    line-height:1.5;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:10px;
+}
+
+.menu a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:white;
+    text-decoration:none;
+    padding:15px 20px;
+    border-radius:12px;
+    font-size:18px;
+    transition:0.3s;
+}
+
+.menu a:hover{
+    background:#2f9ae5;
+}
+
+.menu a.active{
+    background:#2f9ae5;
+}
+
+.logout{
+    margin-top:auto;
+}
+
+.logout button{
+    width:100%;
+    border:none;
+    padding:18px;
+    border-radius:15px;
+    background:#2f9ae5;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+
+/* MAIN */
+
+.main{
+    margin-left:280px;
+    padding:20px;
+}
+
+/* TOPBAR */
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.search-box{
+    width:55%;
+}
+
+.search-box input{
+    width:100%;
+    padding:16px 25px;
+    border:none;
+    border-radius:40px;
+    background:#113865;
+    color:white;
+    font-size:16px;
+}
+
+.search-box input::placeholder{
+    color:#b8c5d6;
+}
+
+.profile-area{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.icon-btn{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:#113865;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+}
+
+.avatar{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    background:#3ba7ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    font-size:20px;
+}
+
+.profile-name{
+    font-size:16px;
+}
+
+/* HEADER */
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:30px;
+}
+
+.header h1{
+    font-size:60px;
+}
+
+.header p{
+    font-size:18px;
+    color:#c4d0df;
+    margin-top:10px;
+}
+
+.datetime{
+    text-align:right;
+    color:#c4d0df;
+    font-size:14px;
+}
+
+/* KPI CARDS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-bottom:25px;
+}
+
+.card{
+    padding:25px;
+    border-radius:25px;
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.card-icon{
+    width:65px;
+    height:65px;
+    border-radius:18px;
+    background:rgba(255,255,255,0.15);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+}
+
+.card h2{
+    margin-bottom:6px;
+}
+
+.green{
+    background:linear-gradient(135deg,#16c784,#15aa70);
+}
+
+.blue{
+    background:linear-gradient(135deg,#4a86ff,#2d66e1);
+}
+
+.orange{
+    background:linear-gradient(135deg,#f7a000,#ee8900);
+}
+
+.purple{
+    background:linear-gradient(135deg,#9860ff,#702be2);
+}
+
+/* CONTENT */
+
+.content{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:25px;
+}
+
+.panel{
+    background:#082b54;
+    border-radius:25px;
+    padding:25px;
+}
+
+.panel-title{
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+/* TABLE */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#103968;
+    text-align:left;
+    padding:15px;
+}
+
+td{
+    padding:15px;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.paid{
+    color:#22c55e;
+    font-weight:bold;
+}
+
+.pending{
+    color:#f59e0b;
+    font-weight:bold;
+}
+
+.overdue{
+    color:#ef4444;
+    font-weight:bold;
+}
+
+/* PAYMENT QUEUE */
+
+.queue-card{
+    background:#123e6d;
+    padding:18px;
+    border-radius:18px;
+    margin-bottom:15px;
+}
+
+.queue-card h4{
+    margin-bottom:8px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1200px){
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .content{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:768px){
+
+    .sidebar{
+        width:80px;
+    }
+
+    .logo{
+        display:none;
+    }
+
+    .main{
+        margin-left:80px;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .search-box{
+        width:100%;
+    }
+
+    .topbar{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .menu a{
+        justify-content:center;
+        font-size:12px;
+        padding:12px;
+    }
+
+    .header h1{
+        font-size:35px;
+    }
+}

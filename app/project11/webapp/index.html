@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dispatcher Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            🚚 Dispatcher Dashboard
+        </div>
+
+        <ul class="menu">
+
+            <li class="active">
+                📊 Dashboard
+            </li>
+
+            <li onclick="window.open('https://port4004-workspaces-ws-hg171.us10.trial.applicationstudio.cloud.sap/project1/index.html','_blank')">
+                📄 Rentals
+            </li>
+
+            <li onclick="window.open('https://port4004-workspaces-ws-hg171.us10.trial.applicationstudio.cloud.sap/project4/index.html','_blank')">
+                🚜 Equipment
+            </li>
+
+            <li onclick="window.open('https://port4004-workspaces-ws-hg171.us10.trial.applicationstudio.cloud.sap/project9/index.html','_blank')">
+                📍 Locations
+            </li>
+
+            <li>
+                📅 Delivery Schedule
+            </li>
+
+            <li>
+                🚚 Dispatch Queue
+            </li>
+
+        </ul>
+
+        <div class="logout-container">
+            <button class="logout-item" onclick="logout()">
+                🚪 Logout
+            </button>
+        </div>
+
+        <div class="sidebar-footer">
+            Dispatcher Dashboard
+        </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+
+        <div class="topbar">
+
+            <div class="search-box">
+                <input
+                    type="text"
+                    placeholder="Search rentals, deliveries, equipment...">
+            </div>
+
+            <div class="topbar-right">
+
+                <div class="notification">🔔</div>
+
+                <div class="notification">📢</div>
+
+                <div class="profile">
+
+                    <div class="avatar">
+                        DP
+                    </div>
+
+                    <div>
+                        <strong>Dispatcher</strong><br>
+                        Dashboard
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- HEADER -->
+
+        <div class="page-header">
+
+            <div>
+
+                <h4>Welcome back,</h4>
+
+                <h1>Dispatcher Dashboard</h1>
+
+                <p>
+                    Manage deliveries, dispatch operations and equipment returns.
+                </p>
+
+            </div>
+
+            <div id="dateTime" class="date-box"></div>
+
+        </div>
+
+        <!-- KPI CARDS -->
+
+        <div class="kpi-grid">
+
+            <div class="kpi-card green">
+                <div class="kpi-icon">🚚</div>
+                <div>
+                    <h2>15</h2>
+                    <p>Active Rentals</p>
+                </div>
+            </div>
+
+            <div class="kpi-card blue">
+                <div class="kpi-icon">📅</div>
+                <div>
+                    <h2>8</h2>
+                    <p>Today's Deliveries</p>
+                </div>
+            </div>
+
+            <div class="kpi-card orange">
+                <div class="kpi-icon">📦</div>
+                <div>
+                    <h2>5</h2>
+                    <p>Equipment Returns</p>
+                </div>
+            </div>
+
+            <div class="kpi-card purple">
+                <div class="kpi-icon">🚜</div>
+                <div>
+                    <h2>48</h2>
+                    <p>Available Equipment</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- MAIN GRID -->
+
+        <div class="content-grid">
+
+            <!-- DELIVERY SCHEDULE -->
+
+            <div class="tasks-panel">
+
+                <h3>📅 Today's Deliveries</h3>
+
+                <table>
+
+                    <tr>
+                        <th>Time</th>
+                        <th>Rental ID</th>
+                        <th>Status</th>
+                    </tr>
+
+                    <tr>
+                        <td>09:00</td>
+                        <td>R-1001</td>
+                        <td class="success">Assigned</td>
+                    </tr>
+
+                    <tr>
+                        <td>11:00</td>
+                        <td>R-1002</td>
+                        <td class="success">Delivered</td>
+                    </tr>
+
+                    <tr>
+                        <td>02:00</td>
+                        <td>R-1003</td>
+                        <td class="pending">Pending</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+            <!-- DISPATCH QUEUE -->
+
+            <div class="uploads-panel">
+
+                <h3>🚚 Dispatch Queue</h3>
+
+                <div class="upload-item">
+                    <strong>R-1001</strong>
+                    <p>Excavator Ready</p>
+                </div>
+
+                <div class="upload-item">
+                    <strong>R-1002</strong>
+                    <p>Loader Assigned</p>
+                </div>
+
+                <div class="upload-item">
+                    <strong>R-1003</strong>
+                    <p>Forklift Pending</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- BOTTOM GRID -->
+
+        <div class="bottom-grid">
+
+            <div class="tasks-panel">
+
+                <h3>🚜 Equipment Availability</h3>
+
+                <table>
+
+                    <tr>
+                        <th>Equipment</th>
+                        <th>Available</th>
+                    </tr>
+
+                    <tr>
+                        <td>Excavators</td>
+                        <td>12</td>
+                    </tr>
+
+                    <tr>
+                        <td>Forklifts</td>
+                        <td>8</td>
+                    </tr>
+
+                    <tr>
+                        <td>Loaders</td>
+                        <td>15</td>
+                    </tr>
+
+                    <tr>
+                        <td>Cranes</td>
+                        <td>5</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+            <div class="uploads-panel">
+
+                <h3>📢 Recent Activity</h3>
+
+                <div class="upload-item">
+                    ✅ Rental Assigned
+                </div>
+
+                <div class="upload-item">
+                    🚚 Equipment Delivered
+                </div>
+
+                <div class="upload-item">
+                    📦 Equipment Returned
+                </div>
+
+                <div class="upload-item">
+                    📍 Location Updated
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script>
+
+function logout(){
+
+    if(confirm("Are you sure you want to logout?")){
+
+        window.location.href =
+        "https://port4004-workspaces-ws-hg171.us10.trial.applicationstudio.cloud.sap/index.html";
+
+    }
+}
+
+function updateDateTime(){
+
+    const now = new Date();
+
+    const date = now.toLocaleDateString(
+        'en-IN',
+        {
+            weekday:'short',
+            day:'numeric',
+            month:'short',
+            year:'numeric'
+        }
+    );
+
+    const time = now.toLocaleTimeString(
+        'en-IN',
+        {
+            hour:'2-digit',
+            minute:'2-digit',
+            second:'2-digit'
+        }
+    );
+
+    document.getElementById("dateTime").innerHTML =
+        date + "<br>" + time;
+}
+
+updateDateTime();
+
+setInterval(updateDateTime,1000);
+
+</script>
+
+</body>
+</html>

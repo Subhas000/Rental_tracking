@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yard Worker Dashboard</title>
+
+    <link rel="stylesheet" href="stly.css">
+</head>
+<script>
+function updateDateTime() {
+
+    const now = new Date();
+
+    const options = {
+        weekday: 'short',
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+    };
+
+    const date = now.toLocaleDateString('en-IN', options);
+
+    const time = now.toLocaleTimeString('en-IN', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+
+    document.getElementById("dateTime").innerHTML =
+        `${date}<br>${time}`;
+}
+
+updateDateTime();
+
+setInterval(updateDateTime, 1000);
+</script>
+<script>
+function logout() {
+
+    const confirmLogout = confirm(
+        "Are you sure you want to logout?"
+    );
+
+    if(confirmLogout){
+
+        window.location.href =
+        "https://port4004-workspaces-ws-hg171.us10.trial.applicationstudio.cloud.sap/index.html";
+
+    }
+}
+</script>
+<body>
+
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            🚜 Equipment Rental
+        </div>
+
+        <ul class="menu">
+
+            <li class="active">📊 Dashboard</li>
+
+            <li>📋 Inspections</li>
+
+            <li>📝 Condition Logs</li>
+
+            <li>⚠ Damage Reports</li>
+
+            <li>📷 Damage Photos</li>
+
+            <li>📍 Locations</li>
+
+        </ul>
+
+        <div class="logout" onclick="logout()">
+    🚪 Logout
+</div>
+    </aside>
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+
+        <div class="topbar">
+
+            <input
+                type="text"
+                placeholder="Search equipment, reports, location...">
+
+            <div class="top-right">
+
+                <span>🔔</span>
+
+                <span>📢</span>
+
+                <div class="profile">
+                    YW
+                </div>
+                 <div>
+                        <strong>yardworker</strong><br>
+                        Dashboard
+                    </div>
+
+
+            </div>
+
+        </div>
+
+        <!-- HEADER -->
+
+        <div class="page-header">
+
+            <div>
+
+                <h4>Welcome back,</h4>
+
+                <h1>Yard Worker</h1>
+
+                <p>
+                    Capture equipment photos and update condition reports.
+                </p>
+
+            </div>
+
+           <div class="date-box" id="dateTime">
+</div>
+        </div>
+
+        <!-- KPI -->
+
+        <div class="kpi-grid">
+
+            <div class="kpi-card green">
+
+                <div class="kpi-icon">📷</div>
+
+                <div>
+
+                    <h2>24</h2>
+
+                    <p>Photos Uploaded</p>
+
+                </div>
+
+            </div>
+
+            <div class="kpi-card blue">
+
+                <div class="kpi-icon">📋</div>
+
+                <div>
+
+                    <h2>15</h2>
+
+                    <p>Inspections Today</p>
+
+                </div>
+
+            </div>
+
+            <div class="kpi-card orange">
+
+                <div class="kpi-icon">⚠</div>
+
+                <div>
+
+                    <h2>8</h2>
+
+                    <p>Damage Reports</p>
+
+                </div>
+
+            </div>
+
+            <div class="kpi-card purple">
+
+                <div class="kpi-icon">🚜</div>
+
+                <div>
+
+                    <h2>120</h2>
+
+                    <p>Total Equipment</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- MAIN GRID -->
+
+        <div class="content-grid">
+
+            <!-- CAMERA PANEL -->
+
+            <div class="camera-panel">
+
+                <h3>📹 Live Camera</h3>
+
+                <video
+                    id="camera"
+                    autoplay
+                    playsinline
+                    class="camera-feed">
+                </video>
+
+                <div class="camera-actions">
+
+                    <button onclick="startCamera()">
+                        📹 Start Camera
+                    </button>
+
+                    <button onclick="capturePhoto()">
+                        📸 Capture Photo
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- UPLOAD PANEL -->
+
+            <div class="upload-panel">
+
+                <h3>📤 Upload Photo</h3>
+
+                <input
+                    type="text"
+                    placeholder="Equipment ID">
+
+                <select>
+
+                    <option>Good Condition</option>
+
+                    <option>Minor Damage</option>
+
+                    <option>Major Damage</option>
+
+                </select>
+
+                <textarea
+                    placeholder="Notes">
+                </textarea>
+
+                <input
+                    type="file"
+                    id="cameraInput"
+                    accept="image/*"
+                    capture="environment">
+
+                <button class="upload-btn">
+                    Upload Photo
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- BOTTOM GRID -->
+
+        <div class="bottom-grid">
+
+            <!-- TASKS -->
+
+            <div class="tasks-panel">
+
+                <h3>📋 Today's Tasks</h3>
+
+                <table>
+
+                    <tr>
+                        <th>Time</th>
+                        <th>Equipment</th>
+                        <th>Task</th>
+                        <th>Status</th>
+                    </tr>
+
+                    <tr>
+                        <td>09:00</td>
+                        <td>EQ-101</td>
+                        <td>Inspection</td>
+                        <td class="success">Completed</td>
+                    </tr>
+
+                    <tr>
+                        <td>11:30</td>
+                        <td>EQ-056</td>
+                        <td>Damage Report</td>
+                        <td class="pending">Pending</td>
+                    </tr>
+
+                    <tr>
+                        <td>02:00</td>
+                        <td>EQ-078</td>
+                        <td>Inspection</td>
+                        <td class="pending">Pending</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+            <!-- RECENT UPLOADS -->
+
+            <div class="uploads-panel">
+
+                <h3>📷 Recent Uploads</h3>
+
+                <div class="upload-item">
+
+                    <strong>EQ-101</strong>
+
+                    <p>Good Condition</p>
+
+                </div>
+
+                <div class="upload-item">
+
+                    <strong>EQ-056</strong>
+
+                    <p>Minor Damage</p>
+
+                </div>
+
+                <div class="upload-item">
+
+                    <strong>EQ-078</strong>
+
+                    <p>Good Condition</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <canvas
+            id="canvas"
+            style="display:none;">
+        </canvas>
+
+        <img
+            id="previewImage"
+            class="preview-image">
+
+    </main>
+
+</div>
+
+<script>
+
+let stream;
+
+async function startCamera(){
+
+    try{
+
+        stream =
+        await navigator.mediaDevices.getUserMedia({
+            video:true
+        });
+
+        document
+        .getElementById("camera")
+        .srcObject = stream;
+
+    }
+    catch(error){
+
+        alert("Please allow camera access.");
+
+    }
+
+}
+
+function capturePhoto(){
+
+    const video =
+    document.getElementById("camera");
+
+    const canvas =
+    document.getElementById("canvas");
+
+    const ctx =
+    canvas.getContext("2d");
+
+    canvas.width =
+    video.videoWidth;
+
+    canvas.height =
+    video.videoHeight;
+
+    ctx.drawImage(
+        video,
+        0,
+        0
+    );
+
+    const image =
+    canvas.toDataURL("image/png");
+
+    const preview =
+    document.getElementById("previewImage");
+
+    preview.src =
+    image;
+
+    preview.style.display =
+    "block";
+
+    alert("Photo captured successfully!");
+
+}
+
+</script>
+
+</body>
+</html>
