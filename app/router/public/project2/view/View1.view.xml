@@ -1,0 +1,307 @@
+<mvc:View
+    controllerName="project2.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
+
+    <Page showHeader="false">
+
+        <content>
+
+            <HBox width="100%">
+
+                <!-- Side Navigation -->
+
+                <tnt:SideNavigation
+                    expanded="true"
+                    width="250px">
+
+                    <tnt:NavigationList>
+
+                        <tnt:NavigationListItem
+                            text="Rental Overview"
+                            icon="sap-icon://home"
+                            select=".onRentalOverview" />
+
+                        <tnt:NavigationListItem
+                            text="Customers"
+                            icon="sap-icon://employee"
+                            select=".onCustomers" />
+
+                        <tnt:NavigationListItem
+                            text="Equipment"
+                            icon="sap-icon://product"
+                            select=".onEquipment" />
+
+                        <tnt:NavigationListItem
+                            text="Rentals"
+                            icon="sap-icon://document"
+                            select=".onRentals" />
+
+                        <tnt:NavigationListItem
+                            text="Condition Logs"
+                            icon="sap-icon://inspection"
+                            select=".onConditionLogs" />
+
+                        <tnt:NavigationListItem
+                            text="Damage Records"
+                            icon="sap-icon://alert"
+                            select=".onDamageRecords" />
+
+                        <tnt:NavigationListItem
+                            text="Maintenance"
+                            icon="sap-icon://wrench"
+                            select=".onMaintenance" />
+
+                        <tnt:NavigationListItem
+                            text="Repair Billing"
+                            icon="sap-icon://sales-order-item"
+                            select=".onRepairBilling" />
+
+                        <tnt:NavigationListItem
+                            text="Locations"
+                            icon="sap-icon://map"
+                            select=".onLocations" />
+
+                        <tnt:NavigationListItem
+                            text="Logout"
+                            icon="sap-icon://log"
+                            select=".onLogout" />
+
+                    </tnt:NavigationList>
+
+                </tnt:SideNavigation>
+
+                <!-- Dashboard Content -->
+
+                <ScrollContainer
+                    width="100%"
+                    vertical="true">
+
+                    <VBox
+                        width="100%"
+                        class="sapUiMediumMargin">
+
+                        <!-- Top Toolbar -->
+
+                        <Toolbar>
+
+                            <SearchField
+                                width="40%"
+                                placeholder="Search customers, rentals, equipment..." />
+
+                            <ToolbarSpacer />
+
+                            <Button
+                                icon="sap-icon://bell" />
+
+                            <Button
+                                icon="sap-icon://message-popup" />
+
+                            <Avatar
+                                initials="AD" />
+
+                            <VBox>
+
+                                <Title
+                                    text="Admin"
+                                    level="H6" />
+
+                                <Text
+                                    text="Dashboard" />
+
+                            </VBox>
+
+                        </Toolbar>
+
+                        <!-- Welcome Section -->
+
+                        <HBox
+                            justifyContent="SpaceBetween"
+                            class="sapUiMediumMarginTop sapUiMediumMarginBottom">
+
+                            <VBox>
+
+                                <Title
+                                    text="Welcome Back, Admin Dashboard"
+                                    level="H2" />
+
+                                <Text
+                                    text="Manage customers, rentals, equipment, maintenance and revenue." />
+
+                            </VBox>
+
+                            <ObjectStatus
+                                text="{dashboard>/dateTime}" />
+
+                        </HBox>
+
+                        <!-- KPI Cards -->
+
+                        <HBox
+                            wrap="Wrap"
+                            justifyContent="SpaceAround">
+
+                            <GenericTile header="Total Equipment">
+
+                                <TileContent>
+
+                                    <NumericContent
+                                        value="{dashboard>/totalEquipment}"
+                                        icon="sap-icon://product" />
+
+                                </TileContent>
+
+                            </GenericTile>
+
+                            <GenericTile header="Total Revenue">
+
+                                <TileContent>
+
+                                    <NumericContent
+                                        value="{dashboard>/totalRevenue}" />
+
+                                </TileContent>
+
+                            </GenericTile>
+
+                            <GenericTile header="Pending Rentals">
+
+                                <TileContent>
+
+                                    <NumericContent
+                                        value="{dashboard>/pendingRentals}" />
+
+                                </TileContent>
+
+                            </GenericTile>
+
+                            <GenericTile header="Customers">
+
+                                <TileContent>
+
+                                    <NumericContent
+                                        value="{dashboard>/totalCustomers}" />
+
+                                </TileContent>
+
+                            </GenericTile>
+
+                        </HBox>
+
+                        <!-- Monthly Rentals Chart -->
+
+                        <Panel
+                            headerText="Monthly Rentals"
+                            class="sapUiMediumMarginTop">
+
+                            <viz:VizFrame
+                                id="idVizFrame"
+                                vizType="column"
+                                width="100%"
+                                height="450px">
+
+                                <viz:dataset>
+
+                                    <viz.data:FlattenedDataset
+                                        data="{chart>/rentals}">
+
+                                        <viz.data:dimensions>
+
+                                            <viz.data:DimensionDefinition
+                                                name="Month"
+                                                value="{chart>Month}" />
+
+                                        </viz.data:dimensions>
+
+                                        <viz.data:measures>
+
+                                            <viz.data:MeasureDefinition
+                                                name="Rentals"
+                                                value="{chart>Rentals}" />
+
+                                        </viz.data:measures>
+
+                                    </viz.data:FlattenedDataset>
+
+                                </viz:dataset>
+
+                                <viz:feeds>
+
+                                    <viz.feeds:FeedItem
+                                        uid="valueAxis"
+                                        type="Measure"
+                                        values="Rentals" />
+
+                                    <viz.feeds:FeedItem
+                                        uid="categoryAxis"
+                                        type="Dimension"
+                                        values="Month" />
+
+                                </viz:feeds>
+
+                            </viz:VizFrame>
+
+                        </Panel>
+
+                        <!-- Recent Customers -->
+
+                        <Panel
+                            headerText="Recent Customers"
+                            class="sapUiMediumMarginTop">
+
+                            <Table
+                                items="{customer>/customers}">
+
+                                <columns>
+
+                                    <Column>
+
+                                        <Text text="Customer Name" />
+
+                                    </Column>
+
+                                    <Column>
+
+                                        <Text text="Email" />
+
+                                    </Column>
+
+                                </columns>
+
+                                <items>
+
+                                    <ColumnListItem>
+
+                                        <cells>
+
+                                            <Text
+                                                text="{customer>contactPerson}" />
+
+                                            <Text
+                                                text="{customer>email}" />
+
+                                        </cells>
+
+                                    </ColumnListItem>
+
+                                </items>
+
+                            </Table>
+
+                        </Panel>
+
+                    </VBox>
+
+                </ScrollContainer>
+
+            </HBox>
+
+        </content>
+
+    </Page>
+
+</mvc:View>

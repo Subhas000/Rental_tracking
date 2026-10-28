@@ -21,8 +21,7 @@
     "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
     "watch-project11": "cds watch --open project11/index.html?sap-ui-xx-viewCache=false --livereload false",
     "watch-project12": "cds watch --open project12/index.html?sap-ui-xx-viewCache=false --livereload false",
-    "watch-project13": "cds watch --open project13/index.html?sap-ui-xx-viewCache=false --livereload false",
-    "watch-project14": "cds watch --open project14/index.html?sap-ui-xx-viewCache=false --livereload false"
+    "watch-project13": "cds watch --open project13/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "keywords": [],
   "author": "",

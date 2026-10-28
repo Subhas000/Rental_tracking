@@ -1,0 +1,364 @@
+<mvc:View
+    controllerName="project11.controller.View3"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt">
+
+    <Page showHeader="false">
+
+        <content>
+
+            <HBox width="100%">
+
+                <!-- Sidebar -->
+
+                <tnt:SideNavigation
+                    width="250px"
+                    expanded="true">
+
+                    <tnt:NavigationList>
+
+                        <tnt:NavigationListItem
+                            text="Dashboard"
+                            icon="sap-icon://home"
+                            select=".onDashboard" />
+
+                        <tnt:NavigationListItem
+                            text="Rentals"
+                            icon="sap-icon://document"
+                            select=".onRentals" />
+
+                        <tnt:NavigationListItem
+                            text="Equipment"
+                            icon="sap-icon://product"
+                            select=".onEquipment" />
+
+                        <tnt:NavigationListItem
+                            text="Locations"
+                            icon="sap-icon://map"
+                            select=".onLocations" />
+
+                        <tnt:NavigationListItem
+                            text="Delivery Schedule"
+                            icon="sap-icon://calendar"
+                            select=".onDeliverySchedule" />
+
+                        <tnt:NavigationListItem
+                            text="Dispatch Queue"
+                            icon="sap-icon://shipping-status"
+                            select=".onDispatchQueue" />
+
+                        <tnt:NavigationListItem
+                            text="Logout"
+                            icon="sap-icon://log"
+                            select=".onLogout" />
+
+                    </tnt:NavigationList>
+
+                </tnt:SideNavigation>
+
+                <!-- Main Content -->
+
+                <ScrollContainer
+                    width="100%"
+                    vertical="true">
+
+                    <VBox
+                        width="100%"
+                        class="sapUiMediumMargin">
+
+                        <!-- Top Bar -->
+
+                        <Toolbar>
+
+                            <SearchField
+                                width="40%"
+                                placeholder="Search rentals, deliveries, equipment..." />
+
+                            <ToolbarSpacer />
+
+                            <Button icon="sap-icon://bell" />
+
+                            <Button icon="sap-icon://message-popup" />
+
+                            <Avatar initials="DP" />
+
+                            <VBox>
+
+                                <Title
+                                    text="Dispatcher"
+                                    level="H6" />
+
+                                <Text
+                                    text="Dashboard" />
+
+                            </VBox>
+
+                        </Toolbar>
+
+                        <!-- Header -->
+
+                        <HBox
+                            justifyContent="SpaceBetween"
+                            class="sapUiMediumMarginTop">
+
+                            <VBox>
+
+                                <Title
+                                    text="Dispatcher Dashboard"
+                                    level="H1" />
+
+                                <Text
+                                    text="Manage deliveries, dispatch operations and equipment returns." />
+
+                            </VBox>
+
+                            <ObjectStatus
+                                text="{dashboard>/dateTime}" />
+
+                        </HBox>
+
+                        <!-- KPI Cards -->
+
+                        <HBox
+                            wrap="Wrap"
+                            justifyContent="SpaceAround"
+                            class="sapUiMediumMarginTop">
+
+                            <GenericTile header="Active Rentals">
+                                <TileContent>
+                                    <NumericContent value="15" />
+                                </TileContent>
+                            </GenericTile>
+
+                            <GenericTile header="Today's Deliveries">
+                                <TileContent>
+                                    <NumericContent value="8" />
+                                </TileContent>
+                            </GenericTile>
+
+                            <GenericTile header="Equipment Returns">
+                                <TileContent>
+                                    <NumericContent value="5" />
+                                </TileContent>
+                            </GenericTile>
+
+                            <GenericTile header="Available Equipment">
+                                <TileContent>
+                                    <NumericContent value="48" />
+                                </TileContent>
+                            </GenericTile>
+
+                        </HBox>
+
+                        <!-- Delivery Schedule -->
+
+                        <Panel
+                            headerText="Today's Deliveries"
+                            class="sapUiMediumMarginTop">
+
+                            <Table>
+
+                                <columns>
+
+                                    <Column>
+                                        <Text text="Time" />
+                                    </Column>
+
+                                    <Column>
+                                        <Text text="Rental ID" />
+                                    </Column>
+
+                                    <Column>
+                                        <Text text="Status" />
+                                    </Column>
+
+                                </columns>
+
+                                <items>
+
+                                    <ColumnListItem>
+
+                                        <cells>
+
+                                            <Text text="09:00" />
+
+                                            <Text text="R-1001" />
+
+                                            <ObjectStatus
+                                                text="Assigned"
+                                                state="Success" />
+
+                                        </cells>
+
+                                    </ColumnListItem>
+
+                                    <ColumnListItem>
+
+                                        <cells>
+
+                                            <Text text="11:00" />
+
+                                            <Text text="R-1002" />
+
+                                            <ObjectStatus
+                                                text="Delivered"
+                                                state="Success" />
+
+                                        </cells>
+
+                                    </ColumnListItem>
+
+                                    <ColumnListItem>
+
+                                        <cells>
+
+                                            <Text text="02:00" />
+
+                                            <Text text="R-1003" />
+
+                                            <ObjectStatus
+                                                text="Pending"
+                                                state="Warning" />
+
+                                        </cells>
+
+                                    </ColumnListItem>
+
+                                </items>
+
+                            </Table>
+
+                        </Panel>
+
+                        <!-- Dispatch Queue -->
+
+                        <Panel
+                            headerText="Dispatch Queue"
+                            class="sapUiMediumMarginTop">
+
+                            <List>
+
+                                <StandardListItem
+                                    title="R-1001"
+                                    description="Excavator Ready" />
+
+                                <StandardListItem
+                                    title="R-1002"
+                                    description="Loader Assigned" />
+
+                                <StandardListItem
+                                    title="R-1003"
+                                    description="Forklift Pending" />
+
+                            </List>
+
+                        </Panel>
+
+                        <!-- Equipment Availability -->
+
+                        <Panel
+                            headerText="Equipment Availability"
+                            class="sapUiMediumMarginTop">
+
+                            <Table>
+
+                                <columns>
+
+                                    <Column>
+                                        <Text text="Equipment" />
+                                    </Column>
+
+                                    <Column>
+                                        <Text text="Available" />
+                                    </Column>
+
+                                </columns>
+
+                                <items>
+
+                                    <ColumnListItem>
+
+                                        <cells>
+
+                                            <Text text="Excavators" />
+                                            <Text text="12" />
+
+                                        </cells>
+
+                                    </ColumnListItem>
+
+                                    <ColumnListItem>
+
+                                        <cells>
+
+                                            <Text text="Forklifts" />
+                                            <Text text="8" />
+
+                                        </cells>
+
+                                    </ColumnListItem>
+
+                                    <ColumnListItem>
+
+                                        <cells>
+
+                                            <Text text="Loaders" />
+                                            <Text text="15" />
+
+                                        </cells>
+
+                                    </ColumnListItem>
+
+                                    <ColumnListItem>
+
+                                        <cells>
+
+                                            <Text text="Cranes" />
+                                            <Text text="5" />
+
+                                        </cells>
+
+                                    </ColumnListItem>
+
+                                </items>
+
+                            </Table>
+
+                        </Panel>
+
+                        <!-- Recent Activity -->
+
+                        <Panel
+                            headerText="Recent Activity"
+                            class="sapUiMediumMarginTop">
+
+                            <List>
+
+                                <StandardListItem
+                                    title="Rental Assigned" />
+
+                                <StandardListItem
+                                    title="Equipment Delivered" />
+
+                                <StandardListItem
+                                    title="Equipment Returned" />
+
+                                <StandardListItem
+                                    title="Location Updated" />
+
+                            </List>
+
+                        </Panel>
+
+                    </VBox>
+
+                </ScrollContainer>
+
+            </HBox>
+
+        </content>
+
+    </Page>
+
+</mvc:View>

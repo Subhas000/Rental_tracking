@@ -1,102 +1,95 @@
-_schema-version: 3.3.0
+_schema-version: "3.3"
+
 ID: rental
 version: 1.0.0
-modules:
-- name: rental-srv
-  type: nodejs
-  path: gen/srv
-  requires:
-  - name: rental-auth
-  - name: rental-db
-  provides:
-  - name: srv-api
-    properties:
-      srv-url: ${default-url}
-  parameters:
-    buildpack: nodejs_buildpack
-    instances: 1
-  build-parameters:
-    builder: npm-ci
-- name: rental-db-deployer
-  type: hdb
-  path: gen/db
-  requires:
-  - name: rental-db
-  parameters:
-    buildpack: nodejs_buildpack
-- name: rental-app-content
-  type: com.sap.application.content
-  path: .
-  requires:
-  - name: rental-repo-host
-    parameters:
-      content-target: true
-  build-parameters:
-    build-result: resources
-    requires:
-    - artifacts:
-      - project14.zip
-      name: project14
-      target-path: resources/
-- name: project14
-  type: html5
-  path: app/project14
-  build-parameters:
-    build-result: dist
-    builder: custom
-    commands:
-    - npm install
-    - npm run build:cf
-    supported-platforms: []
-resources:
-- name: rental-auth
-  type: org.cloudfoundry.managed-service
-  parameters:
-    config:
-      oauth2-configuration:
-        credential-types:
-        - binding-secret
-        - x509
-      tenant-mode: dedicated
-      xsappname: rental-${org}-${space}
-    path: ./xs-security.json
-    service: xsuaa
-    service-plan: application
-- name: rental-db
-  type: com.sap.xs.hdi-container
-  parameters:
-    service: hana
-    service-plan: hdi-shared
-- name: rental-repo-host
-  type: org.cloudfoundry.managed-service
-  parameters:
-    service: html5-apps-repo
-    service-name: rental-html5-service
-    service-plan: app-host
-- name: rental-destination-service
-  type: org.cloudfoundry.managed-service
-  parameters:
-    config:
-      HTML5Runtime_enabled: false
-      init_data:
-        instance:
-          destinations:
-          - Authentication: NoAuthentication
-            Name: ui5
-            ProxyType: Internet
-            Type: HTTP
-            URL: https://ui5.sap.com
-          existing_destinations_policy: update
-      version: 1.0.0
-    service: destination
-    service-name: rental-destination-service
-    service-plan: lite
+description: "Rental Equipment Tracking Cloud Application"
+
 parameters:
-  deploy_mode: html5-repo
   enable-parallel-deployments: true
+
 build-parameters:
   before-all:
-  - builder: custom
-    commands:
-    - npm ci
-    - npx cds build --production
+    - builder: custom
+      commands:
+        - npm ci
+        - npx cds build --production
+
+        - rm -rf app/router/public
+        - mkdir -p app/router/public
+
+        - cp app/index.html app/router/public/index.html
+
+        - mkdir -p app/router/public/project2
+        - cp -r app/project2/webapp/. app/router/public/project2/
+
+        - mkdir -p app/router/public/project10
+        - cp -r app/project10/webapp/. app/router/public/project10/
+
+        - mkdir -p app/router/public/project11
+        - cp -r app/project11/webapp/. app/router/public/project11/
+
+        - mkdir -p app/router/public/project12
+        - cp -r app/project12/webapp/. app/router/public/project12/
+
+        - mkdir -p app/router/public/project13
+        - cp -r app/project13/webapp/. app/router/public/project13/
+
+modules:
+
+  - name: rental-router
+    type: approuter.nodejs
+    path: app/router
+
+    parameters:
+      memory: 128M
+      disk-quota: 256M
+
+    requires:
+      - name: rental-auth
+
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-api
+          url: ~{srv-url}
+          forwardAuthToken: true
+
+  - name: rental-srv
+    type: nodejs
+    path: gen/srv
+
+    parameters:
+      memory: 256M
+      disk-quota: 512M
+      buildpack: nodejs_buildpack
+
+    provides:
+      - name: srv-api
+        properties:
+          srv-url: ${default-url}
+
+    requires:
+      - name: rental-auth
+      - name: rental-db
+
+  - name: rental-db-deployer
+    type: hdb
+    path: gen/db
+
+    requires:
+      - name: rental-db
+
+resources:
+
+  - name: rental-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+
+  - name: rental-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared

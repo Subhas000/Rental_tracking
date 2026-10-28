@@ -1,0 +1,362 @@
+<mvc:View
+    controllerName="project12.controller.View4"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt">
+
+    <Page showHeader="false">
+
+        <content>
+
+            <HBox width="100%">
+
+                <!-- Side Navigation -->
+
+                <tnt:SideNavigation
+                    width="250px"
+                    expanded="true">
+
+                    <tnt:NavigationList>
+
+                        <tnt:NavigationListItem
+                            text="Dashboard"
+                            icon="sap-icon://home"
+                            select=".onDashboard" />
+
+                        <tnt:NavigationListItem
+                            text="Equipment"
+                            icon="sap-icon://product"
+                            select=".onEquipment" />
+
+                        <tnt:NavigationListItem
+                            text="Maintenance"
+                            icon="sap-icon://wrench"
+                            select=".onMaintenance" />
+
+                        <tnt:NavigationListItem
+                            text="Damage Records"
+                            icon="sap-icon://alert"
+                            select=".onDamageRecords" />
+
+                        <tnt:NavigationListItem
+                            text="Condition Logs"
+                            icon="sap-icon://document"
+                            select=".onConditionLogs" />
+
+                        <tnt:NavigationListItem
+                            text="Damage Photos"
+                            icon="sap-icon://camera"
+                            select=".onDamagePhotos" />
+
+                        <tnt:NavigationListItem
+                            text="Repair Tasks"
+                            icon="sap-icon://task"
+                            select=".onRepairTasks" />
+
+                        <tnt:NavigationListItem
+                            text="Logout"
+                            icon="sap-icon://log"
+                            select=".onLogout" />
+
+                    </tnt:NavigationList>
+
+                </tnt:SideNavigation>
+
+                <ScrollContainer
+                    width="100%"
+                    vertical="true">
+
+                    <VBox
+                        width="100%"
+                        class="sapUiMediumMargin">
+
+                        <!-- Top Bar -->
+
+                        <Toolbar>
+
+                            <SearchField
+                                width="40%"
+                                placeholder="Search maintenance jobs..." />
+
+                            <ToolbarSpacer />
+
+                            <Button icon="sap-icon://bell" />
+
+                            <Button icon="sap-icon://message-popup" />
+
+                            <Avatar initials="TC" />
+
+                            <VBox>
+
+                                <Title
+                                    text="Technician"
+                                    level="H6" />
+
+                                <Text
+                                    text="Dashboard" />
+
+                            </VBox>
+
+                        </Toolbar>
+
+                        <!-- Header -->
+
+                        <HBox
+                            justifyContent="SpaceBetween"
+                            class="sapUiMediumMarginTop">
+
+                            <VBox>
+
+                                <Title
+                                    text="Technician Dashboard"
+                                    level="H1" />
+
+                                <Text
+                                    text="Manage equipment maintenance, inspections and repair activities." />
+
+                            </VBox>
+
+                            <ObjectStatus
+                                text="{dashboard>/dateTime}" />
+
+                        </HBox>
+
+                        <!-- KPI Cards -->
+
+                        <HBox
+                            wrap="Wrap"
+                            justifyContent="SpaceAround"
+                            class="sapUiMediumMarginTop">
+
+                            <GenericTile header="Pending Repairs">
+                                <TileContent>
+                                    <NumericContent value="18" />
+                                </TileContent>
+                            </GenericTile>
+
+                            <GenericTile header="Damage Cases">
+                                <TileContent>
+                                    <NumericContent value="7" />
+                                </TileContent>
+                            </GenericTile>
+
+                            <GenericTile header="Maintenance Jobs">
+                                <TileContent>
+                                    <NumericContent value="12" />
+                                </TileContent>
+                            </GenericTile>
+
+                            <GenericTile header="Equipment">
+                                <TileContent>
+                                    <NumericContent value="48" />
+                                </TileContent>
+                            </GenericTile>
+
+                        </HBox>
+
+                        <!-- Maintenance Jobs -->
+
+                        <Panel
+                            headerText="Maintenance Jobs"
+                            class="sapUiMediumMarginTop">
+
+                            <Table>
+
+                                <columns>
+
+                                    <Column>
+                                        <Text text="Job ID"/>
+                                    </Column>
+
+                                    <Column>
+                                        <Text text="Equipment"/>
+                                    </Column>
+
+                                    <Column>
+                                        <Text text="Status"/>
+                                    </Column>
+
+                                </columns>
+
+                                <items>
+
+                                    <ColumnListItem>
+
+                                        <cells>
+
+                                            <Text text="M001"/>
+
+                                            <Text text="Excavator"/>
+
+                                            <ObjectStatus
+                                                text="Pending"
+                                                state="Warning"/>
+
+                                        </cells>
+
+                                    </ColumnListItem>
+
+                                    <ColumnListItem>
+
+                                        <cells>
+
+                                            <Text text="M002"/>
+
+                                            <Text text="Forklift"/>
+
+                                            <ObjectStatus
+                                                text="Completed"
+                                                state="Success"/>
+
+                                        </cells>
+
+                                    </ColumnListItem>
+
+                                    <ColumnListItem>
+
+                                        <cells>
+
+                                            <Text text="M003"/>
+
+                                            <Text text="Loader"/>
+
+                                            <ObjectStatus
+                                                text="In Progress"
+                                                state="Information"/>
+
+                                        </cells>
+
+                                    </ColumnListItem>
+
+                                </items>
+
+                            </Table>
+
+                        </Panel>
+
+                        <!-- Damage Reports -->
+
+                        <Panel
+                            headerText="Damage Reports"
+                            class="sapUiMediumMarginTop">
+
+                            <List>
+
+                                <StandardListItem
+                                    title="D001"
+                                    description="Hydraulic Leak"/>
+
+                                <StandardListItem
+                                    title="D002"
+                                    description="Broken Headlight"/>
+
+                                <StandardListItem
+                                    title="D003"
+                                    description="Cable Damage"/>
+
+                            </List>
+
+                        </Panel>
+
+                        <!-- Inspection Logs -->
+
+                        <Panel
+                            headerText="Inspection Logs"
+                            class="sapUiMediumMarginTop">
+
+                            <Table>
+
+                                <columns>
+
+                                    <Column>
+                                        <Text text="Equipment"/>
+                                    </Column>
+
+                                    <Column>
+                                        <Text text="Status"/>
+                                    </Column>
+
+                                </columns>
+
+                                <items>
+
+                                    <ColumnListItem>
+
+                                        <cells>
+
+                                            <Text text="Excavator"/>
+                                            <ObjectStatus
+                                                text="Passed"
+                                                state="Success"/>
+
+                                        </cells>
+
+                                    </ColumnListItem>
+
+                                    <ColumnListItem>
+
+                                        <cells>
+
+                                            <Text text="Forklift"/>
+                                            <ObjectStatus
+                                                text="Needs Service"
+                                                state="Warning"/>
+
+                                        </cells>
+
+                                    </ColumnListItem>
+
+                                    <ColumnListItem>
+
+                                        <cells>
+
+                                            <Text text="Loader"/>
+                                            <ObjectStatus
+                                                text="Passed"
+                                                state="Success"/>
+
+                                        </cells>
+
+                                    </ColumnListItem>
+
+                                </items>
+
+                            </Table>
+
+                        </Panel>
+
+                        <!-- Recent Activity -->
+
+                        <Panel
+                            headerText="Recent Activity"
+                            class="sapUiMediumMarginTop">
+
+                            <List>
+
+                                <StandardListItem
+                                    title="Repair Completed" />
+
+                                <StandardListItem
+                                    title="Damage Photos Uploaded" />
+
+                                <StandardListItem
+                                    title="Inspection Updated" />
+
+                                <StandardListItem
+                                    title="Equipment Serviced" />
+
+                            </List>
+
+                        </Panel>
+
+                    </VBox>
+
+                </ScrollContainer>
+
+            </HBox>
+
+        </content>
+
+    </Page>
+
+</mvc:View>
