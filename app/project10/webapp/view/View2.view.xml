@@ -1,6 +1,274 @@
-<mvc:View controllerName="project10.controller.View2"
+<mvc:View
+    controllerName="project10.controller.View2"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+    xmlns:unified="sap.ui.unified">
+
+    <Page showHeader="false">
+
+        <content>
+
+            <HBox width="100%">
+
+                <!-- Side Navigation -->
+
+                <tnt:SideNavigation
+                    expanded="true"
+                    width="250px">
+
+                    <tnt:NavigationList>
+
+                        <tnt:NavigationListItem
+                            text="Dashboard"
+                            icon="sap-icon://home" />
+
+                        <tnt:NavigationListItem
+                            text="Inspections"
+                            icon="sap-icon://inspection" />
+
+                        <tnt:NavigationListItem
+                            text="Condition Logs"
+                            icon="sap-icon://document" />
+
+                        <tnt:NavigationListItem
+                            text="Damage Reports"
+                            icon="sap-icon://alert" />
+
+                        <tnt:NavigationListItem
+                            text="Damage Photos"
+                            icon="sap-icon://camera" />
+
+                        <tnt:NavigationListItem
+                            text="Locations"
+                            icon="sap-icon://map" />
+
+                        <tnt:NavigationListItem
+                            text="Logout"
+                            icon="sap-icon://log"
+                            select=".onLogout" />
+
+                    </tnt:NavigationList>
+
+                </tnt:SideNavigation>
+
+                <!-- Main Content -->
+
+                <VBox
+                    width="100%"
+                    class="sapUiMediumMargin">
+
+                    <!-- Top Bar -->
+
+                    <Toolbar>
+
+                        <SearchField
+                            width="40%"
+                            placeholder="Search equipment, reports, location..." />
+
+                        <ToolbarSpacer />
+
+                        <Button icon="sap-icon://bell" />
+
+                        <Button icon="sap-icon://message-popup" />
+
+                        <Avatar initials="YW" />
+
+                        <VBox>
+
+                            <Title text="Yard Worker" level="H6" />
+
+                            <Text text="Dashboard" />
+
+                        </VBox>
+
+                    </Toolbar>
+
+                    <!-- Welcome Section -->
+
+                    <HBox
+                        justifyContent="SpaceBetween"
+                        class="sapUiMediumMarginTop">
+
+                        <VBox>
+
+                            <Title
+                                text="Welcome Back, Yard Worker"
+                                level="H2" />
+
+                            <Text
+                                text="Capture equipment photos and update condition reports." />
+
+                        </VBox>
+
+                        <ObjectStatus
+                            text="{dashboard>/dateTime}" />
+
+                    </HBox>
+
+                    <!-- KPI Cards -->
+
+                    <HBox
+                        wrap="Wrap"
+                        justifyContent="SpaceAround"
+                        class="sapUiMediumMarginTop">
+
+                        <GenericTile header="Photos Uploaded">
+                            <TileContent>
+                                <NumericContent value="24" />
+                            </TileContent>
+                        </GenericTile>
+
+                        <GenericTile header="Inspections Today">
+                            <TileContent>
+                                <NumericContent value="15" />
+                            </TileContent>
+                        </GenericTile>
+
+                        <GenericTile header="Damage Reports">
+                            <TileContent>
+                                <NumericContent value="8" />
+                            </TileContent>
+                        </GenericTile>
+
+                        <GenericTile header="Total Equipment">
+                            <TileContent>
+                                <NumericContent value="120" />
+                            </TileContent>
+                        </GenericTile>
+
+                    </HBox>
+
+                    <!-- Camera Panel -->
+
+                  <!-- Camera Panel -->
+
+<Panel
+    headerText="Live Camera"
+    class="sapUiMediumMarginTop">
+
+    <VBox>
+
+        <HBox class="sapUiSmallMargin">
+
+            <Button
+                text="Start Camera"
+                type="Emphasized"
+                press=".onStartCamera" />
+
+            <Button
+                text="Capture Photo"
+                press=".onCapturePhoto"
+                class="sapUiTinyMarginBegin" />
+
+        </HBox>
+
+        <core:HTML
+            id="cameraArea"
+            content="&lt;div id='cameraContainer'
+            style='width:100%;
+            height:450px;
+            background:#f5f5f5;
+            border:1px solid #d9d9d9;
+            border-radius:8px;
+            display:flex;
+            justify-content:center;
+            align-items:center;'&gt;
+            Camera Preview Will Appear Here
+            &lt;/div&gt;" />
+
+    </VBox>
+
+</Panel>
+<Panel
+    headerText="Captured Photo"
+    class="sapUiMediumMarginTop">
+
+    <VBox
+        class="sapUiMediumMargin">
+
+        <Image
+            id="capturedImage"
+            width="400px"
+            visible="false" />
+
+        <Button
+            text="Upload To Damage Photos"
+            type="Emphasized"
+            press=".onUploadCapturedPhoto"
+            class="sapUiSmallMarginTop" />
+
+    </VBox>
+
+</Panel>
+                    <!-- Upload Panel -->
+
+                    <Panel
+                        headerText="Upload Photo"
+                        class="sapUiMediumMarginTop">
+
+                        <VBox>
+
+                            <Input
+                                placeholder="Equipment ID" />
+
+                            <Select
+                                class="sapUiSmallMarginTop">
+
+                                <items>
+
+                                    <core:Item
+                                        key="1"
+                                        text="Good Condition" />
+
+                                    <core:Item
+                                        key="2"
+                                        text="Minor Damage" />
+
+                                    <core:Item
+                                        key="3"
+                                        text="Major Damage" />
+
+                                </items>
+
+                            </Select>
+
+                            <TextArea
+                                placeholder="Notes"
+                                rows="4"
+                                class="sapUiSmallMarginTop" />
+
+                            <unified:FileUploader
+                                width="100%"
+                                class="sapUiSmallMarginTop" />
+
+                            <Button
+                                text="Upload Photo"
+                                type="Emphasized"
+                                class="sapUiSmallMarginTop" />
+
+                        </VBox>
+
+                    </Panel>
+                    <Panel
+    headerText="Damage Photos"
+    class="sapUiMediumMarginTop">
+
+    <VBox
+        id="damagePhotosContainer"
+        class="sapUiMediumMargin">
+
+    </VBox>
+
+</Panel>
+
+                </VBox>
+
+            </HBox>
+
+        </content>
+
     </Page>
+
 </mvc:View>

@@ -175,19 +175,3 @@ annotate CatalogService.CustomerSrv with @(
     ]
 
 );
-annotate CatalogService.Customers with @(
-    UI.LineItem : [
-
-        {
-            $Type : 'UI.DataFieldForAction',
-            Label : 'Create',
-            Action : 'CatalogService.createCustomer'
-        },
-
-        {
-            $Type : 'UI.DataFieldForAction',
-            Label : 'Update',
-            Action : 'CatalogService.updateCustomer'
-        }
-    ]
-);

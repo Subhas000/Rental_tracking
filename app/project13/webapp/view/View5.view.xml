@@ -1,6 +1,265 @@
-<mvc:View controllerName="project13.controller.View5"
+<mvc:View
+    controllerName="project13.controller.View5"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt">
+
+    <Page showHeader="false">
+
+        <content>
+
+            <HBox width="100%">
+
+                <!-- Side Navigation -->
+
+                <tnt:SideNavigation
+                    width="250px"
+                    expanded="true">
+
+                    <tnt:NavigationList>
+
+                        <tnt:NavigationListItem
+                            text="Dashboard"
+                            icon="sap-icon://home"
+                            select=".onDashboard" />
+
+                        <tnt:NavigationListItem
+                            text="Billing"
+                            icon="sap-icon://money-bills"
+                            select=".onBilling" />
+
+                        <tnt:NavigationListItem
+                            text="Rentals"
+                            icon="sap-icon://document"
+                            select=".onRentals" />
+
+                        <tnt:NavigationListItem
+                            text="Customers"
+                            icon="sap-icon://customer"
+                            select=".onCustomers" />
+
+                        <tnt:NavigationListItem
+                            text="Payments"
+                            icon="sap-icon://payment-approval"
+                            select=".onPayments" />
+
+                        <tnt:NavigationListItem
+                            text="Revenue"
+                            icon="sap-icon://business-objects-experience"
+                            select=".onRevenue" />
+
+                        <tnt:NavigationListItem
+                            text="Invoices"
+                            icon="sap-icon://invoice"
+                            select=".onInvoices" />
+
+                        <tnt:NavigationListItem
+                            text="Logout"
+                            icon="sap-icon://log"
+                            select=".onLogout" />
+
+                    </tnt:NavigationList>
+
+                </tnt:SideNavigation>
+
+                <!-- Main Content -->
+
+                <ScrollContainer
+                    width="100%"
+                    vertical="true">
+
+                    <VBox
+                        width="100%"
+                        class="sapUiMediumMargin">
+
+                        <!-- Top Bar -->
+
+                        <Toolbar>
+
+                            <SearchField
+                                width="40%"
+                                placeholder="Search invoices, payments, customers..." />
+
+                            <ToolbarSpacer />
+
+                            <Button icon="sap-icon://bell" />
+
+                            <Button icon="sap-icon://message-popup" />
+
+                            <Avatar initials="BC" />
+
+                            <Text text="Billing Clerk" />
+
+                        </Toolbar>
+
+                        <!-- Header -->
+
+                        <HBox
+                            justifyContent="SpaceBetween"
+                            class="sapUiMediumMarginTop">
+
+                            <VBox>
+
+                                <Title
+                                    text="Billing Dashboard"
+                                    level="H1" />
+
+                                <Text
+                                    text="Manage invoices, customer billing and payments." />
+
+                            </VBox>
+
+                            <ObjectStatus
+                                text="{dashboard>/dateTime}" />
+
+                        </HBox>
+
+                        <!-- KPI Cards -->
+
+                        <HBox
+                            wrap="Wrap"
+                            justifyContent="SpaceAround"
+                            class="sapUiMediumMarginTop">
+
+                            <GenericTile header="Total Invoices">
+                                <TileContent>
+                                    <NumericContent value="125" />
+                                </TileContent>
+                            </GenericTile>
+
+                            <GenericTile header="Total Revenue">
+                                <TileContent>
+                                    <NumericContent value="4.8L" />
+                                </TileContent>
+                            </GenericTile>
+
+                            <GenericTile header="Pending Payments">
+                                <TileContent>
+                                    <NumericContent value="18" />
+                                </TileContent>
+                            </GenericTile>
+
+                            <GenericTile header="Active Customers">
+                                <TileContent>
+                                    <NumericContent value="25" />
+                                </TileContent>
+                            </GenericTile>
+
+                        </HBox>
+
+                        <!-- Today's Invoices -->
+
+                        <Panel
+                            headerText="Today's Invoices"
+                            class="sapUiMediumMarginTop">
+
+                            <Table>
+
+                                <columns>
+
+                                    <Column>
+                                        <Text text="Invoice ID" />
+                                    </Column>
+
+                                    <Column>
+                                        <Text text="Customer" />
+                                    </Column>
+
+                                    <Column>
+                                        <Text text="Amount" />
+                                    </Column>
+
+                                    <Column>
+                                        <Text text="Status" />
+                                    </Column>
+
+                                </columns>
+
+                                <items>
+
+                                    <ColumnListItem>
+
+                                        <cells>
+
+                                            <Text text="INV-1001" />
+                                            <Text text="ABC Constructions" />
+                                            <Text text="₹25,000" />
+                                            <ObjectStatus
+                                                text="Paid"
+                                                state="Success" />
+
+                                        </cells>
+
+                                    </ColumnListItem>
+
+                                    <ColumnListItem>
+
+                                        <cells>
+
+                                            <Text text="INV-1002" />
+                                            <Text text="XYZ Builders" />
+                                            <Text text="₹18,500" />
+                                            <ObjectStatus
+                                                text="Pending"
+                                                state="Warning" />
+
+                                        </cells>
+
+                                    </ColumnListItem>
+
+                                    <ColumnListItem>
+
+                                        <cells>
+
+                                            <Text text="INV-1003" />
+                                            <Text text="Metro Infra" />
+                                            <Text text="₹42,000" />
+                                            <ObjectStatus
+                                                text="Overdue"
+                                                state="Error" />
+
+                                        </cells>
+
+                                    </ColumnListItem>
+
+                                </items>
+
+                            </Table>
+
+                        </Panel>
+
+                        <!-- Payment Queue -->
+
+                        <Panel
+                            headerText="Payment Queue"
+                            class="sapUiMediumMarginTop">
+
+                            <List>
+
+                                <StandardListItem
+                                    title="INV-1002"
+                                    description="Awaiting Payment" />
+
+                                <StandardListItem
+                                    title="INV-1003"
+                                    description="Overdue Invoice" />
+
+                                <StandardListItem
+                                    title="INV-1004"
+                                    description="Processing Payment" />
+
+                            </List>
+
+                        </Panel>
+
+                    </VBox>
+
+                </ScrollContainer>
+
+            </HBox>
+
+        </content>
+
     </Page>
+
 </mvc:View>
