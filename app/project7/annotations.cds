@@ -1,4 +1,15 @@
 using CatalogService from '../../srv/cat-services';
+annotate CatalogService.MaintenanceRecordSrv with @(
+    Capabilities.InsertRestrictions : {
+        Insertable : true
+    },
+    Capabilities.UpdateRestrictions : {
+        Updatable : true
+    },
+    Capabilities.DeleteRestrictions : {
+        Deletable : false
+    }
+);
 
 annotate CatalogService.MaintenanceRecordSrv with @(
 
@@ -95,7 +106,24 @@ annotate CatalogService.MaintenanceRecordSrv with @(
                 $Type : 'UI.DataField',
                 Label : 'Status',
                 Value : status
-            }
+            },
+             {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'CatalogService.MaintenanceRecordSrv.CreateMaintenanceRecord',
+            Label : 'Create'
+        },
+
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'CatalogService.MaintenanceRecordSrv.UpdateMaintenanceRecord',
+            Label : 'Update'
+        },
+
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'CatalogService.MaintenanceRecordSrv.DeleteMaintenanceRecord',
+            Label : 'Delete'
+        }
 
         ]
     },

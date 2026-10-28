@@ -1,4 +1,15 @@
 using CatalogService from '../../srv/cat-services';
+annotate CatalogService.DamageRecordSrv with @(
+    Capabilities.InsertRestrictions : {
+        Insertable : true
+    },
+    Capabilities.UpdateRestrictions : {
+        Updatable : true
+    },
+    Capabilities.DeleteRestrictions : {
+        Deletable : false
+    }
+);
 
 annotate CatalogService.DamageRecordSrv with @(
 
@@ -70,6 +81,23 @@ annotate CatalogService.DamageRecordSrv with @(
             $Type : 'UI.DataField',
             Label : 'Damage Status',
             Value : damageStatus
+        },
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'CatalogService.DamageRecordSrv.CreateDamageRecord',
+            Label : 'Create'
+        },
+
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'CatalogService.DamageRecordSrv.UpdateDamageRecord',
+            Label : 'Update'
+        },
+
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'CatalogService.DamageRecordSrv.DeleteDamageRecord',
+            Label : 'Delete'
         }
 
     ],

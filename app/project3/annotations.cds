@@ -2,7 +2,12 @@ using CatalogService from '../../srv/cat-services';
 
 annotate CatalogService.CustomerSrv with @(
     Capabilities.DeleteRestrictions : {
-        Deletable : true
+        Deletable : false
+    }
+);
+annotate CatalogService.CustomerSrv with @(
+    Capabilities.DeleteRestrictions : {
+        Insertable : true
     }
 );
 annotate CatalogService.CustomerSrv with @(
@@ -69,7 +74,22 @@ annotate CatalogService.CustomerSrv with @(
             $Type : 'UI.DataField',
             Label : 'Address',
             Value : address
-        }
+        },
+        {
+    $Type : 'UI.DataFieldForAction',
+    Action : 'CatalogService.CustomerSrv.CreateCustomer',
+    Label : 'Create'
+},
+{
+    $Type : 'UI.DataFieldForAction',
+    Action : 'CatalogService.CustomerSrv.UpdateCustomer',
+    Label : 'Update'
+},
+{
+    $Type : 'UI.DataFieldForAction',
+    Action : 'CatalogService.CustomerSrv.DeleteCustomer',
+    Label : 'Delete'
+}
 
     ],
 

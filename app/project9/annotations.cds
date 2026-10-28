@@ -1,6 +1,17 @@
 using CatalogService from '../../srv/cat-services';
 
 annotate CatalogService.LocationSrv with @(
+    Capabilities.InsertRestrictions : {
+        Insertable : true
+    },
+    Capabilities.UpdateRestrictions : {
+        Updatable : true
+    },
+    Capabilities.DeleteRestrictions : {
+        Deletable : false
+    }
+);
+annotate CatalogService.LocationSrv with @(
 
     UI.HeaderInfo : {
         TypeName : 'Location',
@@ -63,6 +74,23 @@ annotate CatalogService.LocationSrv with @(
             $Type : 'UI.DataField',
             Label : 'Longitude',
             Value : longitude
+        },
+         {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'CatalogService.LocationSrv.CreateLocation',
+            Label : 'Create'
+        },
+
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'CatalogService.LocationSrv.UpdateLocation',
+            Label : 'Update'
+        },
+
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'CatalogService.LocationSrv.DeleteLocation',
+            Label : 'Delete'
         }
 
     ],

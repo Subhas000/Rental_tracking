@@ -1,6 +1,21 @@
 using CatalogService from '../../srv/cat-services';
 
 annotate CatalogService.EquipmentSrv with @(
+    Capabilities.DeleteRestrictions : {
+        Deletable : false
+    }
+);
+annotate CatalogService.EquipmentSrv with @(
+    Capabilities.DeleteRestrictions : {
+        Insertable : true
+    }
+);
+annotate CatalogService.EquipmentSrv with @(
+    Capabilities.UpdateRestrictions : {
+        Updatable : true
+    }
+);
+annotate CatalogService.EquipmentSrv with @(
 
 
     UI.HeaderInfo : {
@@ -77,7 +92,22 @@ annotate CatalogService.EquipmentSrv with @(
             $Type : 'UI.DataField',
             Label : 'Status',
             Value : currentStatus
-        }
+        },
+        {
+    $Type : 'UI.DataFieldForAction',
+    Action : 'CatalogService.EquipmentSrv.CreateEquipment',
+    Label : 'Create'
+},
+{
+    $Type : 'UI.DataFieldForAction',
+    Action : 'CatalogService.EquipmentSrv.UpdateEquipment',
+    Label : 'Update'
+},
+{
+    $Type : 'UI.DataFieldForAction',
+    Action : 'CatalogService.EquipmentSrv.DeleteEquipment',
+    Label : 'Delete'
+}
 
     ],
 

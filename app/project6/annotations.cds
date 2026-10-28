@@ -1,4 +1,15 @@
 using CatalogService from '../../srv/cat-services';
+annotate CatalogService.ConditionLogSrv with @(
+    Capabilities.InsertRestrictions : {
+        Insertable : true
+    },
+    Capabilities.UpdateRestrictions : {
+        Updatable : true
+    },
+    Capabilities.DeleteRestrictions : {
+        Deletable : false
+    }
+);
 
 annotate CatalogService.ConditionLogSrv with @(
 
@@ -64,6 +75,23 @@ annotate CatalogService.ConditionLogSrv with @(
             $Type : 'UI.DataField',
             Label : 'Meter Reading',
             Value : meterReading
+        },
+         {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'CatalogService.ConditionLogSrv.CreateConditionLog',
+            Label : 'Create Condition Log'
+        },
+
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'CatalogService.ConditionLogSrv.UpdateConditionLog',
+            Label : 'Update Condition Log'
+        },
+
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'CatalogService.ConditionLogSrv.DeleteConditionLog',
+            Label : 'Delete Condition Log'
         }
 
     ],

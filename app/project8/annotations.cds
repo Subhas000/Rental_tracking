@@ -1,6 +1,17 @@
 using CatalogService from '../../srv/cat-services';
 
 annotate CatalogService.RepairBillSrv with @(
+    Capabilities.InsertRestrictions : {
+        Insertable : true
+    },
+    Capabilities.UpdateRestrictions : {
+        Updatable : true
+    },
+    Capabilities.DeleteRestrictions : {
+        Deletable : false
+    }
+);
+annotate CatalogService.RepairBillSrv with @(
 
     UI.HeaderInfo : {
         TypeName : 'Billing Record',
@@ -64,6 +75,23 @@ annotate CatalogService.RepairBillSrv with @(
             $Type : 'UI.DataField',
             Label : 'Billing Status',
             Value : billingStatus
+        },
+         {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'CatalogService.RepairBillSrv.CreateRepairBills',
+            Label : 'Create'
+        },
+
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'CatalogService.RepairBillSrv.UpdateRepairBills',
+            Label : 'Update'
+        },
+
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'CatalogService.RepairBillSrv.DeleteRepairBills',
+            Label : 'Delete'
         }
 
     ],
