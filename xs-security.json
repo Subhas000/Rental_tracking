@@ -1,6 +1,8 @@
 {
   "xsappname": "rental-tracking-app",
   "tenant-mode": "dedicated",
+  "description": "Rental Equipment Tracking and Management System",
+
   "scopes": [
     {
       "name": "$XSAPPNAME.Admin",
@@ -31,56 +33,96 @@
       "description": "Billing and invoicing"
     }
   ],
+
+  "attributes": [],
+
   "role-templates": [
     {
       "name": "Admin",
       "description": "Administrator",
-      "scope-references": [
-        "$XSAPPNAME.Admin"
-      ]
+      "scope-references": ["$XSAPPNAME.Admin"],
+      "attribute-references": []
     },
     {
       "name": "Manager",
       "description": "Manager",
-      "scope-references": [
-        "$XSAPPNAME.Manager"
-      ]
+      "scope-references": ["$XSAPPNAME.Manager"],
+      "attribute-references": []
     },
     {
       "name": "Auditor",
       "description": "Auditor",
-      "scope-references": [
-        "$XSAPPNAME.Auditor"
-      ]
+      "scope-references": ["$XSAPPNAME.Auditor"],
+      "attribute-references": []
     },
     {
       "name": "Dispatcher",
       "description": "Dispatcher",
-      "scope-references": [
-        "$XSAPPNAME.Dispatcher"
-      ]
+      "scope-references": ["$XSAPPNAME.Dispatcher"],
+      "attribute-references": []
     },
     {
       "name": "YardWorker",
       "description": "Yard Worker",
-      "scope-references": [
-        "$XSAPPNAME.YardWorker"
-      ]
+      "scope-references": ["$XSAPPNAME.YardWorker"],
+      "attribute-references": []
     },
     {
       "name": "Technician",
       "description": "Technician",
-      "scope-references": [
-        "$XSAPPNAME.Technician"
-      ]
+      "scope-references": ["$XSAPPNAME.Technician"],
+      "attribute-references": []
     },
     {
       "name": "BillingClerk",
       "description": "Billing Clerk",
-      "scope-references": [
-        "$XSAPPNAME.BillingClerk"
-      ]
+      "scope-references": ["$XSAPPNAME.BillingClerk"],
+      "attribute-references": []
     }
   ],
-  "attributes": []
+
+  "role-collections": [
+    {
+      "name": "Rental_Admin",
+      "description": "Rental System Administrator",
+      "role-template-references": ["$XSAPPNAME.Admin"]
+    },
+    {
+      "name": "Rental_Manager",
+      "description": "Rental Operations Manager",
+      "role-template-references": ["$XSAPPNAME.Manager"]
+    },
+    {
+      "name": "Rental_Auditor",
+      "description": "Rental Audit User",
+      "role-template-references": ["$XSAPPNAME.Auditor"]
+    },
+    {
+      "name": "Rental_Dispatcher",
+      "description": "Equipment Dispatcher",
+      "role-template-references": ["$XSAPPNAME.Dispatcher"]
+    },
+    {
+      "name": "Rental_YardWorker",
+      "description": "Yard Worker",
+      "role-template-references": ["$XSAPPNAME.YardWorker"]
+    },
+    {
+      "name": "Rental_Technician",
+      "description": "Maintenance Technician",
+      "role-template-references": ["$XSAPPNAME.Technician"]
+    },
+    {
+      "name": "Rental_BillingClerk",
+      "description": "Billing Clerk",
+      "role-template-references": ["$XSAPPNAME.BillingClerk"]
+    }
+  ],
+
+  "oauth2-configuration": {
+    "redirect-uris": [
+      "https://*.hana.ondemand.com/**",
+      "https://*.applicationstudio.cloud.sap/**"
+    ]
+  }
 }
